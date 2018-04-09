@@ -1,0 +1,182 @@
+* {
+  margin:0;
+  padding: 0;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+input {
+  outline: none;
+}
+
+@font-face {
+  font-family: 'iconfont';  /* project id 621548 */
+  src: url('//at.alicdn.com/t/font_621548_umw13ebew70kke29.eot');
+  src: url('//at.alicdn.com/t/font_621548_umw13ebew70kke29.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_621548_umw13ebew70kke29.woff') format('woff'),
+  url('//at.alicdn.com/t/font_621548_umw13ebew70kke29.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_621548_umw13ebew70kke29.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-drop:before { 
+  content: "\e647"; 
+}
+
+.icon-select:before { 
+  content: "\e667"; 
+}
+
+.icon-unselect:before { 
+  content: "\e66d"; 
+}
+
+.icon-delete:before { 
+  content: "\e629"; 
+}
+
+body {
+  background: #bdc3c7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.App {
+  /* position: absolute; */
+  margin: 100px auto 30px;
+}
+
+.m-title {
+
+  color: #fff;
+  text-align: center;
+  font-size: 70px;
+}
+.m-todolist {
+  position: relative;
+  width: 500px;
+  margin-left: 50%;
+  transform: translateX(-50%); 
+  
+}
+.u-input {
+  box-sizing: border-box;
+  padding: 20px;
+  padding-left: 70px; 
+  width: 100%;
+  color: #777;
+  font-size: 20px;
+}
+
+.m-list {
+  box-sizing: border-box;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-top: none; 
+}
+
+.m-list-item {
+  position: relative;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  color: #666;
+}
+
+.m-list-footer {
+  position: relative;
+  padding: 10px;
+}
+
+.m-btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.u-btn {
+  padding: 5px;
+  margin: 0 5px;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.u-left-text {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.m-input {
+  position: relative;
+}
+
+.icon-drop {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 25px;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.icon-drop.select {
+  color: #2c3e50;
+}
+
+.icon-item {
+  font-size: 30px;
+  margin: 0 10px;
+  line-height: 25px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.icon-item.icon-select {
+  color: #bdc3c7;
+}
+
+.icon-item.icon-unselect {
+  color: #666;
+}
+
+.icon-drop.unselect {
+  color: #bdc3c7;
+}
+.u-item-text {
+  line-height: 25px;
+}
+
+.u-item-text.u-completed {
+  text-decoration: line-through;
+  color: #bdc3c7;
+  font-style: italic;
+}
+.icon-delete {
+  position: absolute;
+  right: 20px;
+  line-height: 25px;
+  color: brown;
+  cursor: pointer;
+}
+
+.z-hide {
+  display: none;
+}
+
+.u-item-input {
+  box-sizing: border-box;
+  padding: 5px;
+  margin-left: 60px;
+  width: calc(100% - 80px);
+  height: 48px;
+  color: #777;
+  border: 2px solid #2c3e50;
+  font-size: 20px;
+}
