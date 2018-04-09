@@ -14,11 +14,13 @@ yarn start
 ```
 
 ### 文件说明
+```
 │     
 ├── public
 └── src
     ├── components  Dumb组件，不依赖除了react.js和Dumb组件以外的东西
     └── container  Smart组件，专门做数据相关的应用逻辑
+```
 
 ### 编码约定
 * 私有方法：_开头
