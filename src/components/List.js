@@ -15,7 +15,7 @@ class List extends Component {
                 <Item>123</Item>
                 <Item>345</Item>
                 <div className="m-list-footer">
-                    <span className="u-left-text">4 items left</span>
+                    <span className="u-left-text">2 items left</span>
                     <div className="m-btn-wrapper">
                         <Button>All</Button>
                         <Button>Active</Button>
