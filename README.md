@@ -10,7 +10,7 @@ react+redux 实现TODO List
 
 ### Start
 ```
-yarn start
+npm start
 ```
 
 ### 文件说明
@@ -19,7 +19,8 @@ yarn start
 ├── public
 └── src
     ├── components  Dumb组件，不依赖除了react.js和Dumb组件以外的东西
-    └── container  Smart组件，专门做数据相关的应用逻辑
+    ├── container  Smart组件，专门做数据相关的应用逻辑
+    └── redux  redux相关
 ```
 
 ### 编码约定

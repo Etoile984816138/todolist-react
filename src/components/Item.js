@@ -4,7 +4,6 @@ class Item extends Component {
     constructor() {
         super();
         this.state = {
-            isSelect: false, // TODO
             moveIn: false,
             isInput: false
         }
@@ -15,24 +14,24 @@ class Item extends Component {
             onMouseOut={(e) => this._onMouseLeaveItem(e)}>
             <span
                 className={this._toggleItemStyle.apply(this)}
-                onClick={(e) => this._onToggleItem(e)}
+                onClick={(e) => this._onToggleItem()}
             ></span>
             <span
                 className={this._itemTextStyle.apply(this)}
                 onDoubleClick={(e) => this._onDoubleClickItem(e)}
             >{this.props.children}</span>
-            <span 
+            <span
                 className={this._itemDeleteStyle.apply(this)}
                 onClick={(e) => this._onDeleteItem(e)}></span>
         </div>;
 
         const ItemInput = <form onSubmit={(e) => this._onCompleteItem(e)}>
-            <input 
-            type="text" 
-            className="u-item-input"
-            onBlur={(e) => this._onBlurItemInput(e)}
-            autoFocus/>
-            </form>;
+            <input
+                type="text"
+                className="u-item-input"
+                onBlur={(e) => this._onBlurItemInput(e)}
+                autoFocus />
+        </form>;
 
         const listItem = this.state.isInput ? ItemInput : ItemText;
         return (<div>{listItem}</div>);
@@ -40,7 +39,7 @@ class Item extends Component {
 
     _toggleItemStyle() {
         let selectClass = 'iconfont icon-item';
-        if (this.state.isSelect) {
+        if (this.props.status) {
             selectClass += ' icon-select';
         } else {
             selectClass += ' icon-unselect';
@@ -49,14 +48,13 @@ class Item extends Component {
     }
 
     _onToggleItem() {
-        this.setState({
-            isSelect: !this.state.isSelect
-        })
+        const { id, status } = this.props;
+        this.props.updateItem(id, status);
     }
 
     _itemTextStyle() {
         let className = 'u-item-text';
-        if (this.state.isSelect) {
+        if (this.props.status) {
             className += ' u-completed';
         }
         return className;
