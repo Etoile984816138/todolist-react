@@ -5,7 +5,8 @@ class Item extends Component {
         super();
         this.state = {
             moveIn: false,
-            isInput: false
+            isInput: false,
+            inputValue: ''
         }
     }
     render() {
@@ -25,16 +26,30 @@ class Item extends Component {
                 onClick={(e) => this._onDeleteItem(e)}></span>
         </div>;
 
-        const ItemInput = <form onSubmit={(e) => this._onCompleteItem(e)}>
+        const ItemInput = <form onSubmit={(e) => this._onEditItem(e)}>
             <input
                 type="text"
                 className="u-item-input"
                 onBlur={(e) => this._onBlurItemInput(e)}
+                onChange={(e) => this._onChange(e)}
+                value={this.state.inputValue}
                 autoFocus />
         </form>;
 
         const listItem = this.state.isInput ? ItemInput : ItemText;
         return (<div>{listItem}</div>);
+    }
+
+    componentDidMount() {
+        this.setState({
+            inputValue: this.props.children
+        });
+    }
+
+    _onChange(event) {
+        this.setState({
+            inputValue: event.target.value
+        });
     }
 
     _toggleItemStyle() {
@@ -89,13 +104,16 @@ class Item extends Component {
         })
     }
 
-    _onCompleteItem(e) {
+    _onEditItem(e) {
+        const { id } = this.props;
+        const value = this.state.inputValue;
         e.preventDefault();
         this._onBlurItemInput();
+        this.props.onEditItem(id, value);
     }
 
     _onDeleteItem(e) {
-        console.log('delete');
+        this.props.onDeleteItem();
     }
 }
 

@@ -6,7 +6,6 @@ react+redux 实现TODO List
 * Input：回车 添加Item，左侧按钮全选
 * Item：左侧点击完成，右侧点击删除，鼠标移到Item上出现删除按钮,双击修改Item
 * 底部：未完成数量，筛选（all、active、completed）
-* 其它：localstorage
 
 ### Start
 ```

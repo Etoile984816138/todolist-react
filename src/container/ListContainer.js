@@ -3,23 +3,28 @@ import React, { Component } from 'react';
 import ItemContainer from './ItemContainer';
 import Footer from '../components/Footer';
 
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../redux/actions/listActions';
+
 class ListContainer extends Component {
-    constructor() {
-        super();
-        this.state = {
-            filter: 0
-        }
-    }
     render() {
-        const filterList = this.setFilter(this.state.filter, this.props.listItems);
+        const allList = this.props.listItems;
+        const filterList = this.setFilter(this.props.filter, allList);
         const listItems = filterList.map((item, index) =>
                 <ItemContainer item={item} key={index} />
             );
-        const total = this.props;
+        const total = this.setFilter(1, allList).length;
+
+        const footer = allList.length > 0 ? <Footer
+            total={total}
+            filter={this.props.filter}
+            selectFooterBtn={this.selectFooterBtn.bind(this)} />:'';
+
         return (
             <div className="m-list">
                 {listItems}
-                <Footer total={filterList.length}/>
+                {footer}
             </div>
         );
     }
@@ -35,6 +40,16 @@ class ListContainer extends Component {
                 return list;
         }
     }
+    selectFooterBtn(filter){
+        this.props.actions.selectFooterBtn(filter);
+    }
 }
 
-export default ListContainer;
+const mapStateToProps = (state) => ({
+    ...state.list
+});
+
+export default connect(
+    mapStateToProps,
+    dispatch => ({ actions: bindActionCreators(actions, dispatch) })
+)(ListContainer);

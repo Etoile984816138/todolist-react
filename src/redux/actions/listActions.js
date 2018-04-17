@@ -10,19 +10,26 @@ export const updateItem = (id, status) => ({
     id,
     status
 });
-// export const getLiveroomList = (param) => dispatch => {
-//     dispatch({
-//         type: types.GET_LIVEROOM_LIST_START
-//     });
-//     getLiveList(param).then(resp => {
-//         dispatch({
-//             type: types.GET_LIVEROOM_LIST_SUCCESS,
-//             data: resp.data
-//         })
-//     }).catch(err => {
-//         dispatch({
-//             type: types.GET_LIVEROOM_LIST_ERROR,
-//             error: err.msg
-//         })
-//     })
-// };
+
+export const selectFooterBtn = (filter) => ({
+    type: types.SELECT_FOOTER_BTN,
+    filter
+});
+
+export const deleteItem = (id) => ({
+    type:types.DELETE_ITEM,
+    id
+});
+export const addItem = (item) => ({
+    type: types.ADD_ITEM,
+    item
+});
+export const updateAll = (status) => ({
+    type:types.UPDATE_ALL,
+    status
+});
+export const editItem = (id,value)=>({
+    type:types.UPDATE_ITEM,
+    id,
+    value
+})

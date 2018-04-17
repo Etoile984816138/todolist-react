@@ -1,24 +1,10 @@
 import types from '../constants/listConstants';
-import { assocPath} from '../../util/assist';
+import { assocPath, without, map } from '../../util/assist';
 
 const initialState = {
-    list:{
-        '0':{
-            id:0,
-            text:'sfcfe3',
-            status:0
-        },
-        '1': {
-            id: 1,
-            text: 'dvfer',
-            status: 1
-        },
-        '2': {
-            id: 2,
-            text: 'evce',
-            status: 0
-        }
-    }
+    list: {
+    },
+    filter: 0
 };
 
 export default (state = initialState, action) => {
@@ -43,6 +29,35 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 list: assocPath([action.id, 'status'], action.status, state.list)
+            }
+        case types.SELECT_FOOTER_BTN:
+            return {
+                ...state,
+                filter: action.filter
+            }
+        case types.DELETE_ITEM:
+            return {
+                ...state,
+                list: without(action.id, state.list)
+            }
+        case types.ADD_ITEM:
+            return {
+                ...state,
+                list: assocPath([action.item.id], action.item, state.list)
+            }
+        case types.UPDATE_ALL:
+            return {
+                ...state,
+                list: map(state.list, (item) => {
+                    item.status = action.status;
+                    return item;
+                }),
+                isAllSelect: action.status
+            }
+        case types.UPDATE_ITEM:
+            return {
+                ...state,
+                list: assocPath([action.id, 'text'], action.value, state.list)
             }
         default:
             return state;

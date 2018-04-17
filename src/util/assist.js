@@ -39,3 +39,30 @@ export const assocPath = (path, val, obj) => {
         return assoc(idx, val, obj);
     }
 }
+
+export const without = (key, obj) => {
+    const result = {};
+
+    for (let i in obj) {
+        if (i !== String(key)) {
+            result[i] = obj[i];
+        }
+    }
+    return result;
+}
+
+/**
+ * 对一个集合上每一个对象进行处理，返回一个新的对象
+ * @param {Function} fun 
+ * @param {Object} obj 
+ */
+export const map = (obj, fun) => {
+    const result = Object.assign({},obj);
+    for (let i in result){
+        console.log(result[i], fun(result[i]));
+        result[i] = fun(result[i]);
+    }
+    return result;
+}
+export const randomString = () => (
+    '0000' + (Math.random() * Math.pow(36, 4) << 0).toString(36)).slice(-4);

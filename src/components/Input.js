@@ -4,8 +4,7 @@ class Input extends Component {
     constructor() {
         super();
         this.state = {
-            value: '',
-            isAllSelect: false
+            value: ''
         }
     }
     render() {
@@ -34,6 +33,9 @@ class Input extends Component {
     _onSubmit(event) {
         event.preventDefault();
         this.props.onSubmit(this.state.value);
+        this.setState({
+            value:''
+        });
     }
 
     _onChange(event) {
@@ -44,7 +46,7 @@ class Input extends Component {
 
     _dropClass() {
         let selectClass = 'iconfont icon-drop';
-        if (this.state.isAllSelect) {
+        if (this.props.isAllSelect) {
             selectClass += ' select';
         } else {
             selectClass += ' unselect';
@@ -52,9 +54,7 @@ class Input extends Component {
         return selectClass;
     }
     _toggleClass() {
-        this.setState({
-            isAllSelect: !this.state.isAllSelect
-        });
+        this.props.onUpdateAll();
     }
 }
 
