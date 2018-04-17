@@ -19,7 +19,13 @@ npm start
 └── src
     ├── components  Dumb组件，不依赖除了react.js和Dumb组件以外的东西
     ├── container  Smart组件，专门做数据相关的应用逻辑
-    └── redux  redux相关
+    ├── redux  redux相关
+    │   ├── actions  action方法集合
+    │   ├── constants  常量
+    │   ├── reducers  reducer集合
+    │   ├── fetchs  网络请求
+    │   ├── store.js  创建store
+    └── util  公共方法
 ```
 
 ### 编码约定
